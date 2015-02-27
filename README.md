@@ -54,6 +54,14 @@ app/console cron:scan
 app/console cron:run
 ```
 
+5. Configure web interface (optional)
+```
+#app/config/routing.yml
+cronbundle:
+    prefix:   /admin/cron
+    resource: "@ColourStreamCronBundle/Resources/config/routing.yml"
+```
+
 ## Running your cron jobs automatically
 
 This bundle is designed around the idea that your tasks will be run with a minimum interval - the tasks will be run no more frequently than you schedule them, but they can only run when you trigger then (by running `app/console cron:run`, or the forthcoming web endpoint, for use with webcron services).

@@ -1,0 +1,3 @@
+cronbundle:
+    resource: @ColourStreamCronBundle/Controller/
+    type:     annotation

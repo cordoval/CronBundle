@@ -1,0 +1,19 @@
+{% extends "ColourStreamCronBundle::base.html.twig" %}
+
+{% block body %}
+    <table>
+        {% for cronJob in cronJobs %}
+            <tr{% if cronJob.mostRecentRun and cronJob.mostRecentRun.result %} style="font-weight:bold;"{% endif %}>
+                <td>{{ cronJob.command }}</td>
+                <td>
+                    {% if cronJob.mostRecentRun %}
+                        {{ cronJob.mostRecentRun.runAt|date('Y-m-d H:i:s') }}
+                        {% if cronJob.mostRecentRun.result %}
+                            <br>{{ cronJob.mostRecentRun.output }}
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
